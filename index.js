@@ -116,22 +116,29 @@ const questions = [
         #Contact
         *GitHub :${gitHub}
         *E-mail :${email};
+       
+      createNewFile(title, template);
       })),
       ,
-];
-
-// TODO: Create a function to write README file
+    ];
+    
+    // TODO: Create a function to write README file
 const fs = require('fs');
-
 function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data, (err) => {
+fs.writeFile('\/${fileName.toLowerCase(),split(' '),join('')}.md', data, (err) => {
     if (err) throw err;
     console.log('File has been created successfully.');
   });
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+  inquirer.prompt(questions).then((answers) => {
+    console.log('Creating READMe.md flie...');
+    writeToFile('README.md', generateMarkdown(answers));
+  });
+
+}
 
 // Function call to initialize app
 init();
