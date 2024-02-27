@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input 
 const questions = [
@@ -39,43 +40,46 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'What license will you be using for your project?',
-        choices: [none(default), Academic Free License v3.0,
-          Apache license 2.0,
-          Artistic license 2.0,
-          Boost Software License 1.0,
-          BSD 2-clause "Simplified" license,
-          BSD 3-clause "New" or "Revised" license,
-          BSD 3-clause Clear license,
-          BSD 4-clause "Original" or "Old" license,
-          BSD Zero-Clause license,
-          Creative Commons license family,
-          Creative Commons Zero v1.0 Universal,
-          Creative Commons Attribution 4.0,
-          Creative Commons Attribution ShareAlike 4.0,
-          Do What The F*ck You Want To Public License,
-          Educational Community License v2.0,
-          Eclipse Public License 1.0,
-          Eclipse Public License 2.0,
-          European Union Public License 1.1,
-          GNU Affero General Public License v3.0,
-          GNU General Public License family,
-          GNU General Public License v2.0,
-          GNU General Public License v3.0,
-          GNU Lesser General Public License family,
-          GNU Lesser General Public License v2.1,
-          GNU Lesser General Public License v3.0,
-          ISC,
-          LaTeX Project Public License v1.3c,
-          Microsoft Public License,
-          MIT,
-          Mozilla Public License 2.0,
-          Open Software License 3.0,
-          PostgreSQL License,
-          SIL Open Font License 1.1,
-          University of Illinois/NCSA Open Source License,
-          The Unlicense,
-          zLib License,
-           ],
+choices: [
+  "none",
+  "Academic Free License v3.0",
+  "Apache 2.0",
+  "Artistic 2.0",
+  "Boost Software 1.0",
+  "BSD 2-clause ",
+  "BSD 3-clause ",
+  "BSD 3-clause Clear ",
+  "BSD 4-clause ",
+  "BSD Zero-Clause ",
+  "Creative Commons family",
+  "Creative Commons Zero v1.0 Universal",
+  "Creative Commons Attribution 4.0",
+  "Creative Commons Attribution ShareAlike 4.0",
+  "Do What The F*ck You Want To Public ",
+  "Educational Community v2.0",
+  "Eclipse Public  1.0",
+  "Eclipse Public  2.0",
+  "European Union Public  1.1",
+  "GNU Affero General Public  v3.0",
+  "GNU General Public  family",
+  "GNU General Public  v2.0",
+  "GNU General Public  v3.0",
+  "GNU Lesser General Public  family",
+  "GNU Lesser General Public License v2.1",
+  "GNU Lesser General Public License v3.0",
+  "ISC",
+  "LaTeX Project Public License v1.3c",
+  "Microsoft Public License",
+  "MIT",
+  "Mozilla Public License 2.0",
+  "Open Software License 3.0",
+  "PostgreSQL License",
+  "SIL Open Font License 1.1",
+  "University of Illinois/NCSA Open Source License",
+  "The Unlicense",
+  "zLib License",
+],
+         
       },
       {
         type: 'input',
@@ -88,44 +92,12 @@ const questions = [
         message: 'What is your email address?',
       },
       ]
-      ).then(({
-        title,
-        description,
-        installation,
-        usage,
-        contribution,
-        test,
-        license,
-        gitHub,
-        email,
-      }) => ({
-        const templateData = '* ${title}
-        *[installation](#installation)
-        *[usage](#usage)
-        *[contribution](#contribution)
-        *[license](#license)
-        #Installation
-        *${installation}
-        ##Usage
-        *${usage}
-        ##Contribution
-        *${contribution}
-        ###Test 
-        *${test};
-        
-        #Contact
-        *GitHub :${gitHub}
-        *E-mail :${email};
-       
-      createNewFile(title, template);
-      })),
-      ,
+      )  
     ];
     
     // TODO: Create a function to write README file
-const fs = require('fs');
 function writeToFile(fileName, data) {
-fs.writeFile('\/${fileName.toLowerCase(),split(' '),join('')}.md', data, (err) => {
+  fs.writeFile(`${fileName.toLowerCase().split(' ').join('')}.md`, data, (err) => {
     if (err) throw err;
     console.log('File has been created successfully.');
   });
@@ -134,10 +106,9 @@ fs.writeFile('\/${fileName.toLowerCase(),split(' '),join('')}.md', data, (err) =
 // TODO: Create a function to initialize app
 function init() {
   inquirer.prompt(questions).then((answers) => {
-    console.log('Creating READMe.md flie...');
+    console.log('Creating README.md file...');
     writeToFile('README.md', generateMarkdown(answers));
   });
-
 }
 
 // Function call to initialize app
