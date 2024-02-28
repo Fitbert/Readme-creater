@@ -2,9 +2,13 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (!license) {
-    return '';  
-}
-return `![License](https://img.shields.io/badge/License-${license}-blue.sgv)`;
+    return '';
+  }
+
+  // Replace spaces and special characters in the license name with dashes
+  const formattedLicense = license.replace(/ /g, '-').toLowerCase();
+  
+  return `![License](https://img.shields.io/badge/License-${formattedLicense}-blue.svg)`;
 }
 
 // TODO: Create a function that returns the license link
@@ -42,16 +46,16 @@ function generateMarkdown(data) {
   * [Test](#test)
   * [Contact](#contact)
   ## Installation
-  *${data.installation}
+  * ${data.installation}
   ## Usage
-  *${data.usage}
+  * ${data.usage}
   ## Contribution
-  *${data.contribution}
+  * ${data.contribution}
   ## Test
-  *${data.test}
+  * ${data.test}
   ## Contact
-  *GitHub: ${data.gitHub}
-  *E-mail: ${data.email}
+  * GitHub: ${data.gitHub}
+  * E-mail: ${data.email}
   `;
 }
 

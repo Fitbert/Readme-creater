@@ -5,7 +5,6 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input 
 const questions = [
-    inquirer.prompt([
       {
         type: 'input',
         name: 'title',
@@ -91,8 +90,8 @@ choices: [
         name: 'email',
         message: 'What is your email address?',
       },
-      ]
-      )  
+      
+       
     ];
     
     // TODO: Create a function to write README file
